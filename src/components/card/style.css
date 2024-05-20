@@ -1,0 +1,99 @@
+.card {
+    width: 400px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 15px;
+  }
+  
+  .vulnerability-assessment {
+    font-size: medium;
+    font-weight: 500;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card-title-container {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .card-title {
+    color: gray;
+    font-size: medium;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  
+  .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 25px;
+    background-color: rgb(128, 249, 249);
+  }
+  
+  .task-type-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .border-grey-box {
+    padding: 4px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    background-color: #f5f5f5;
+  }
+  
+  .task-type-text {
+    font-weight: bold;
+  }
+  
+  .card-image-container {
+    position: relative;
+    height: fit-content;
+  }
+  
+  .availability-circle {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: gray;
+  }
+  
+  .availability-circle.available {
+    background-color: green;
+  }
+  
+  .availability-circle.unavailable {
+    background-color: gray;
+  }
+  
+  .task-type-icon {
+    height: 20px;
+  }
+
+  .task-type-icon-container {
+    padding-bottom: 0;
+  }
