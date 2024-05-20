@@ -1,6 +1,6 @@
 import "./App.css";
 import ListView from "./components/list-view/ListView";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useFetchTaskData from "./utils/custom-hooks/useFetchTaskData";
 import DisplayMenu from "./components/display-menu/DisplayMenu";
 import DisplayMenuIcon from "./assets/icons/Display.svg";
@@ -76,7 +76,7 @@ function App() {
       const priority = priorityObj[item];
       if (priority) {
         priorityWiseData[priority] = tickets.filter(
-          (ele) => ele.priority == item
+          (ele) => ele.priority === parseInt(item)
         );
       }
     });
@@ -103,9 +103,9 @@ function App() {
     setListHeaderWiseData(listHeaderWiseData);
   };
 
-  const handleSelectedGrouping = useCallback((type = "status") => {
+  const handleSelectedGrouping = (type = "status") => {
     setDisplayFilter(type);
-  });
+  };
 
   useEffect(() => {
     const headerList = getHeaderList(displayFilter);

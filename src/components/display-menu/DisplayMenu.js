@@ -10,7 +10,9 @@ const groupingObj = {
 
 const DisplayMenu = ({ handleSelectedGrouping }) => {
   const [selectedGrouping, setSelectedGrouping] = useState("status");
-  const [selectedOrdering, setSelectedOrdering] = useState("priority");
+  const [selectedOrdering, 
+    // setSelectedOrdering
+  ] = useState("priority");
 
   const handleGroupingChange = (e, type) => {
     e.preventDefault();
@@ -19,9 +21,9 @@ const DisplayMenu = ({ handleSelectedGrouping }) => {
     element.classList.toggle("active")
   };
 
-  const handleOrderingChange = (type) => {
-    setSelectedOrdering(type);
-  };
+  // const handleOrderingChange = (type) => {
+  //   setSelectedOrdering(type);
+  // };
 
   const handleClick = (e) => {
     e.preventDefault();

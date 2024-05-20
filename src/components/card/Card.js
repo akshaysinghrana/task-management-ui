@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.css";
 import { priorityIconObj } from "../../utils/constants/helper";
 
