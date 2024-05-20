@@ -33,7 +33,7 @@ const DisplayMenu = ({ handleSelectedGrouping }) => {
 
   useEffect(() => {
     handleSelectedGrouping(selectedGrouping);
-  }, [selectedGrouping])
+  }, [selectedGrouping, handleSelectedGrouping])
 
   return (
     <div className="display-container">

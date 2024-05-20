@@ -23,7 +23,7 @@ export default function ListView({
         (a, b) => a.priority - b.priority
       ) || [];
     setData(data);
-  }, [listHeaderWiseData]);
+  }, [listHeaderWiseData, headerText]);
 
   return (
     <div className="list-view-container">

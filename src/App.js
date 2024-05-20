@@ -1,6 +1,6 @@
 import "./App.css";
 import ListView from "./components/list-view/ListView";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useFetchTaskData from "./utils/custom-hooks/useFetchTaskData";
 import DisplayMenu from "./components/display-menu/DisplayMenu";
 import DisplayMenuIcon from "./assets/icons/Display.svg";
@@ -19,7 +19,7 @@ function App() {
     setIsOpen(!isOpen);
   };
 
-  const getHeaderList = (type) => {
+  const getHeaderList = useCallback((type) => {
     const headerList = {};
     const result = {};
     const userMap = {};
@@ -54,9 +54,9 @@ function App() {
     });
 
     return result;
-  };
+  }, [users, tickets]);
 
-  const loadUserWiseData = () => {
+  const loadUserWiseData = useCallback(() => {
     const userWiseData = {};
     console.log("here");
     const usersList = users.filter((item) => item.id);
@@ -68,9 +68,9 @@ function App() {
       }
     });
     return userWiseData;
-  };
+  }, [tickets, users]);
 
-  const loadPriorityWiseData = () => {
+  const loadPriorityWiseData = useCallback(() => {
     const priorityWiseData = {};
     Object.keys(priorityObj).forEach((item) => {
       const priority = priorityObj[item];
@@ -81,17 +81,17 @@ function App() {
       }
     });
     return priorityWiseData;
-  };
+  }, [tickets]);
 
-  const loadStatusWiseData = (statusList) => {
+  const loadStatusWiseData = useCallback((statusList) => {
     const statusWiseData = {};
     Object.keys(statusList).forEach((item) => {
       statusWiseData[item] = tickets.filter((ele) => ele.status === item);
     });
     return statusWiseData;
-  };
+  }, [tickets]);
 
-  const getGroupWiseData = (headerList, type) => {
+  const getGroupWiseData = useCallback((headerList, type) => {
     let listHeaderWiseData = {};
     if (type === "status") {
       listHeaderWiseData = loadStatusWiseData(headerList);
@@ -101,7 +101,7 @@ function App() {
       listHeaderWiseData = loadPriorityWiseData(headerList);
     }
     setListHeaderWiseData(listHeaderWiseData);
-  };
+  }, [loadStatusWiseData, loadUserWiseData, loadPriorityWiseData]);
 
   const handleSelectedGrouping = (type = "status") => {
     setDisplayFilter(type);
@@ -115,9 +115,9 @@ function App() {
       userObj[user.id] = user;
     });
     setUserObj({ ...userObj });
-  }, [displayFilter, tickets, users]);
+  }, [displayFilter, tickets, users, getGroupWiseData, getHeaderList, userObj]);
 
-  if (error) {
+  if (error) { 
     return (
       <div className="error">
         Something went wrong.
